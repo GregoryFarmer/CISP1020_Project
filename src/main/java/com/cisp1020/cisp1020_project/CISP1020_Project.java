@@ -6,7 +6,6 @@ package com.cisp1020.cisp1020_project;
  * 
  */
 public class CISP1020_Project {
-
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
