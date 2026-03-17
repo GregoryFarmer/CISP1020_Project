@@ -70,8 +70,8 @@ public class ReservationFileHandler{
      * @throws IllegalArgumentException if the date is invalid or in the past
      */
     private void validateDate(String date) throws IllegalArgumentException{
-        if(!date.matches("\\d{4}-\\d{2}-\\d{2}")){
-            throw new IllegalArgumentException("Invalid date format. Use YYYY-MM-DD");
+        if(!date.matches("\\d{2}-\\d{2}-\\d{4}")){
+            throw new IllegalArgumentException("Invalid date format. Use MM-DD-YYYY");
         }
         LocalDate reservationDate = LocalDate.parse(date);
         if(reservationDate.isBefore(LocalDate.now())){

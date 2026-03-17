@@ -8,16 +8,18 @@ package com.cisp1020.cisp1020_project;
 public class Car {
     private static int cars = 0;
     public int id;
+    public String licensePlate;//added to be able to track cars individually
     public String name;
    
     /**
      * 
      * @param name 
      */
-    public Car(String name) {
+    public Car(String licensePlate, String name) {
         this.id = cars;
+        this.licensePlate = licensePlate;
         this.name = name;
-        id++;
+        cars++;//this change increments cars across objects, not just the local copy
     }
     
     /**

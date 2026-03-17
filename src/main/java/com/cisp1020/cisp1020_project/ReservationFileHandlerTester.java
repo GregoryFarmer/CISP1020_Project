@@ -1,0 +1,86 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.cisp1020.cisp1020_project;
+
+/**
+ *
+ * @author jacob
+ */
+public class ReservationFileHandlerTester {
+    public static void main(String[] args) {
+        testCreateReservation();
+        testGetValidReservation();
+        testGetInvalidReservation();
+        testInvalidDateFormat();
+        testPastDate();
+        testCarUnavailable();
+    }
+        
+        private static void testCreateReservation(){
+            System.out.println("--- test reservation ---");
+            Customer customer = new Customer("Tom Clancy", "C001", "MasterCard");
+            Car car = new Car("SJR-472"," Camry");
+            
+            Reservation r = new Reservation(customer, car, "11-25-2026");
+            ReservationFileHandler handler = new ReservationFileHandler();
+            handler.createReservation(r);
+            
+            System.out.println();
+        }
+        
+        private static void testGetValidReservation(){
+            System.out.println("--- test for valid reservation ---");
+            ReservationFileHandler validR = new ReservationFileHandler();
+            validR.getReservation("Tom Clancy");
+            
+            System.out.println();
+        }
+        
+        private static void testGetInvalidReservation(){
+            System.out.println("--- test invalid reservation ---");
+            ReservationFileHandler invalidR = new ReservationFileHandler();
+            
+            invalidR.getReservation("Reservation not found.");
+            
+            System.out.println();
+        }
+        
+        private static void testInvalidDateFormat(){
+            System.out.println("--- invalid date test ---");
+            Customer customer = new Customer("Willoiam DaFoe", " C002", " Money");
+            Car car = new Car("CKE-513"," Toyota");
+            Reservation r = new Reservation(customer, car, "02-04-2027");
+            
+            ReservationFileHandler invalidDate = new ReservationFileHandler();
+            invalidDate.createReservation(r);
+            
+            System.out.println();
+        }
+        
+        private static void testPastDate(){
+            System.out.println("--- past date test ---");
+            Customer customer = new Customer("Bob Belcher", " C003", " Gold");
+            Car car = new Car("XTY-092"," Honda Civic");
+            
+            Reservation r = new Reservation(customer, car, "02-10-1995");
+            
+            ReservationFileHandler pastDate = new ReservationFileHandler();
+            pastDate.createReservation(r);
+            
+            System.out.println();
+        }
+        
+        private static void testCarUnavailable(){
+            System.out.println("--- car unavailable test ---");
+            Car sameCar = new Car("SJR-472"," Camry");
+            Customer customer2 = new Customer("Jim Brownie", "C004", "Gambling");
+            
+            Reservation r2 = new Reservation(customer2, sameCar, "06-30-2026");
+            
+            
+        }
+        
+    
+}
