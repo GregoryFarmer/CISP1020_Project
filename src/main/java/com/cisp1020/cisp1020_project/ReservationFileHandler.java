@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 /**
  *
- * @author jacob
+ * @author jacob ADD A WAY TO RESERVE CARS FOR A PERIOD OF TIME!!!!
+ * RIGHT  NOW YOU DONT HAVE AN END DATE SO A CAR WILL BE RESERVED FOREVER!!!
  */
 public class ReservationFileHandler{
     private static final String RESERVATION_FOLDER = "reservations/"; 
@@ -17,7 +18,7 @@ public class ReservationFileHandler{
      */
     public void createReservation(Reservation r){
         try{
-            validateDate(r.getDate());
+            validateDate(r.getStartDate(), r.getEndDate());
             checkCarAvailablity(String.valueOf(r.getCar().getID()));
             
             File folder = new File(RESERVATION_FOLDER);
@@ -42,7 +43,7 @@ public class ReservationFileHandler{
     catch (FileNotFoundException e){
         System.out.println("Error creating reservation file for: " +
                             r.getCustomer().getName() + " on " +
-                            r.getDate());
+                            r.getStartDate() + " through " + r.getEndDate());
     }
     }
     /**
@@ -69,14 +70,19 @@ public class ReservationFileHandler{
      * @param date the date to validate
      * @throws IllegalArgumentException if the date is invalid or in the past
      */
-    private void validateDate(String date) throws IllegalArgumentException{
-        if(!date.matches("\\d{2}-\\d{2}-\\d{4}")){
+    private void validateDate(String startDate, String endDate) throws IllegalArgumentException{
+        if(!startDate.matches("\\d{2}-\\d{2}-\\d{4}") ||
+                !endDate.matches("\\d{2}-\\d{2}-\\d{4}")){
             throw new IllegalArgumentException("Invalid date format. Use MM-DD-YYYY");
         }
-        LocalDate reservationDate = LocalDate.parse(date);
-        if(reservationDate.isBefore(LocalDate.now())){
+        LocalDate reservationStartDate = LocalDate.parse(startDate);
+        LocalDate reservationEndDate = LocalDate.parse(endDate);
+        if(reservationStartDate.isBefore(LocalDate.now())){
             throw new IllegalArgumentException("Reservation date canno be in the past."
                    + " They are not Marty McFly");
+        }
+        if(!reservationEndDate.isAfter(reservationStartDate)){
+            throw new IllegalArgumentException("End date must be after the start date");
         }
     }
     
@@ -85,7 +91,6 @@ public class ReservationFileHandler{
         File[] reservations = folder.listFiles();
         if(reservations != null){
             for(File file : reservations){
-                try{
                     try (Scanner in = new Scanner(file)) {
                         while (in.hasNextLine()) {
                             if(in.nextLine().contains(carID)){
@@ -97,7 +102,7 @@ public class ReservationFileHandler{
                         }
                        
                     }
-                }
+                
                 catch (FileNotFoundException e){
                     System.out.println("Error reading reservation file: " + 
                                         e.getMessage());

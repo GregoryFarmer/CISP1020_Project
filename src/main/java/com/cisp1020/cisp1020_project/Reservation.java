@@ -13,12 +13,14 @@ package com.cisp1020.cisp1020_project;
 public class Reservation{
     private Customer customer;  
     private Car car;// maybe change to vechile
-    private String date;
+    private String startDate;
+    private String endDate;
     
-    public Reservation(Customer customer, Car car, String date){
+    public Reservation(Customer customer, Car car, String startDate, String endDate){
         this.customer = customer;
         this.car = car;
-        this.date = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
         
         public Customer getCustomer(){//shouldnt this call get name from customer?
@@ -29,13 +31,18 @@ public class Reservation{
             return car;
         }
         
-        public String getDate(){
-            return date;
+        public String getStartDate(){
+            return startDate;
+        }
+        
+        public String getEndDate(){
+            return endDate;
         }
         
         @Override
         public String toString(){
-            return customer.getID() + "," + car.getID() + "," + date;
+            return customer.getID() + ", " + car.getID() + ", " 
+                    +  startDate + ", "  + endDate;
         }
         
     }

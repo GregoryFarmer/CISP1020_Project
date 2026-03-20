@@ -23,7 +23,7 @@ public class ReservationFileHandlerTester {
             Customer customer = new Customer("Tom Clancy", "C001", "MasterCard");
             Car car = new Car("SJR-472"," Camry");
             
-            Reservation r = new Reservation(customer, car, "11-25-2026");
+            Reservation r = new Reservation(customer, car, "11-25-2026", "11-30-2026");
             ReservationFileHandler handler = new ReservationFileHandler();
             handler.createReservation(r);
             
@@ -51,7 +51,7 @@ public class ReservationFileHandlerTester {
             System.out.println("--- invalid date test ---");
             Customer customer = new Customer("Willoiam DaFoe", " C002", " Money");
             Car car = new Car("CKE-513"," Toyota");
-            Reservation r = new Reservation(customer, car, "02-04-2027");
+            Reservation r = new Reservation(customer, car, "02-04-2027", "02-07-2027");
             
             ReservationFileHandler invalidDate = new ReservationFileHandler();
             invalidDate.createReservation(r);
@@ -64,7 +64,7 @@ public class ReservationFileHandlerTester {
             Customer customer = new Customer("Bob Belcher", " C003", " Gold");
             Car car = new Car("XTY-092"," Honda Civic");
             
-            Reservation r = new Reservation(customer, car, "02-10-1995");
+            Reservation r = new Reservation(customer, car, "02-10-1995", "02-15-1995");
             
             ReservationFileHandler pastDate = new ReservationFileHandler();
             pastDate.createReservation(r);
@@ -77,7 +77,7 @@ public class ReservationFileHandlerTester {
             Car sameCar = new Car("SJR-472"," Camry");
             Customer customer2 = new Customer("Jim Brownie", "C004", "Gambling");
             
-            Reservation r2 = new Reservation(customer2, sameCar, "06-30-2026");
+            Reservation r2 = new Reservation(customer2, sameCar, "06-30-2026", "07-03-2026");
             
             
         }
