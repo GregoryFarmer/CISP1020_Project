@@ -12,13 +12,13 @@ package com.cisp1020.cisp1020_project;
  */
 public class Reservation{
     private Customer customer;  
-    private Car car;// maybe change to vechile
+    private Vehicle vehicle;// maybe change to vechile
     private String startDate;
     private String endDate;
     
-    public Reservation(Customer customer, Car car, String startDate, String endDate){
+    public Reservation(Customer customer, Vehicle vehicle, String startDate, String endDate){
         this.customer = customer;
-        this.car = car;
+        this.vehicle = vehicle;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -27,8 +27,8 @@ public class Reservation{
             return customer;
         }
         
-        public Car getCar(){
-            return car;
+        public Vehicle getCar(){
+            return vehicle;
         }
         
         public String getStartDate(){
@@ -41,7 +41,7 @@ public class Reservation{
         
         @Override
         public String toString(){
-            return customer.getID() + ", " + car.getID() + ", " 
+            return customer.getID() + ", " + vehicle.getID() + ", " 
                     +  startDate + ", "  + endDate;
         }
         
