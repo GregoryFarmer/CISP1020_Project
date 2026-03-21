@@ -5,18 +5,13 @@ import com.cisp1020.cisp1020_project.Vehicle;
  *
  * @author Gregory Farmer <gregory.farmer>
  */
-public class Motorcycle extends Vehicle {
-    private final String category = "Bike";
-    
+public class Motorcycle extends Vehicle {    
     public Motorcycle() {
         super("Motorcycle", 8000);
+        this.category = "Bike";
     }
     
     @Override public double getRentalRate(int days) {
-        return ((this.price * (Vehicle.rentalRate / 100)) * days) + 50;
+        return super.getRentalRate(days) + 50;
     }
-    
-    @Override public String getCategory() {
-        return this.category;
-    };
 }

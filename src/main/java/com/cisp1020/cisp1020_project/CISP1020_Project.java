@@ -12,9 +12,6 @@ public class CISP1020_Project {
         Vehicle v3 = new SUV();
         Vehicle v4 = new Motorcycle();
                        
-        Vehicle.search(v -> v.price < 30000 && v.isAvailable).forEach(veh -> {
-            System.out.println(veh.getRentalRate(100));
-            System.out.println(veh.getCategory());
-        });
+        System.out.println(Vehicle.sortByPrice());
     }
 }

@@ -8,18 +8,18 @@ import java.util.function.Predicate;
  * @author Gregory Farmer <gregory.farmer>
  */
 public class Vehicle {
-    public static ArrayList<Vehicle> vehicles = new ArrayList();
+    private static ArrayList<Vehicle> vehicles = new ArrayList();
     
     // These variables must be passed as arguments when calling new Vehicle() (unless if you're testing).
-    public String model = "Undefined"; 
-    public double price; 
- 
-    public String category = "Unknown";
-    public static final double rentalRate = 1.5;
+    private String model = "Undefined"; 
+    protected String category = "Unknown";
+
+    private double price; 
+    private double rentalRate = 1.5;
     
     // These variables will be automatically set when constructing vehicles!
-    public int id; // The order in which the vehicle was created
-    public String licensePlate;
+    private int id; // The order in which the vehicle was created
+    private String licensePlate;
     public boolean isAvailable; // Whether or not the vehicle is available (use setAvailable() in handling reservations)
     
     /**
@@ -135,6 +135,13 @@ public class Vehicle {
     }
     
     /**
+     * @return Whether the vehicle is available or not.
+     */
+    public boolean getAvailable() {
+        return this.isAvailable;
+    }
+    
+    /**
      * Sets the vehicle's price.
      * @param price The new price of the vehicle.
      */
@@ -160,12 +167,12 @@ public class Vehicle {
     
     
     /**
-     * Calculates 
+     * Calculates the daily price if the vehicle is rented for x days.
      * @param days The number of days the vehicle is being rented.
      * @return The price of renting the car for x days.
      */
     public double getRentalRate(int days) {
-        return ((this.price * (Vehicle.rentalRate / 100)) * days);
+        return ((this.getPrice() * (this.rentalRate / 100)) * days);
     }
     
     /**
