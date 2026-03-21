@@ -4,13 +4,13 @@ import java.util.*; import java.io.*; import java.lang.*;
 import java.util.function.Predicate;
 
 /**
- * The Vehicle superclass responsible for creating new vehicles.
+ * The Vehicles superclass responsible for creating new vehicles.
  * @author Gregory Farmer <gregory.farmer>
  */
-public class Vehicle {
-    public static ArrayList<Vehicle> vehicles = new ArrayList();
+public class Vehicles {
+    public static ArrayList<Vehicles> vehicles = new ArrayList();
     
-    // These variables must be passed as arguments when calling new Vehicle() (unless if you're testing).
+    // These variables must be passed as arguments when calling new Vehicles() (unless if you're testing).
     public String model = "Undefined"; 
     public String category = "Undefined";
     public double price; 
@@ -51,13 +51,13 @@ public class Vehicle {
      * @param Predicate filter 
      * {@snippet
      *  Vehicle v1 = new Vehicle()
-     *  Vehicle.search(v -> v.getID() == 0);
-     * }
+  Vehicles.search(v -> v.getID() == 0);
+ }
      * @return ArrayList<Vehicle> An ArrayList containing *only* the vehicles with the parameters.
      */
-    public static ArrayList<Vehicle> search(Predicate<Vehicle> filter) {
-        ArrayList<Vehicle> result = new ArrayList<>();
-        for (Vehicle v : vehicles) {
+    public static ArrayList<Vehicles> search(Predicate<Vehicles> filter) {
+        ArrayList<Vehicles> result = new ArrayList<>();
+        for (Vehicles v : vehicles) {
             if(filter.test(v)) {
                 result.add(v);
             }
@@ -71,7 +71,7 @@ public class Vehicle {
      * @param String category The category the vehicle is in (i.e. Car vs Bike)
      * @param double price The price of the vehicle.
      */
-    public Vehicle(String model, String category, double price) {
+    public Vehicles(String model, String category, double price) {
         this.id = vehicles.size();
         this.licensePlate = generateLicense();
         this.model = model; this.category = category; this.price = price;
@@ -82,7 +82,7 @@ public class Vehicle {
     /**
      * For testing purposes - so you don't have to pass parameters every time!
      */
-    public Vehicle() {
+    public Vehicles() {
         this.id = vehicles.size();
         this.licensePlate = generateLicense();
         this.isAvailable = true;

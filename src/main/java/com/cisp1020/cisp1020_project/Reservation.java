@@ -12,11 +12,11 @@ package com.cisp1020.cisp1020_project;
  */
 public class Reservation{
     private Customer customer;  
-    private Vehicle vehicle;// maybe change to vechile
+    private Vehicles vehicle;// maybe change to vechile
     private String startDate;
     private String endDate;
     
-    public Reservation(Customer customer, Vehicle vehicle, String startDate, String endDate){
+    public Reservation(Customer customer, Vehicles vehicle, String startDate, String endDate){
         this.customer = customer;
         this.vehicle = vehicle;
         this.startDate = startDate;
@@ -27,7 +27,7 @@ public class Reservation{
             return customer;
         }
         
-        public Vehicle getCar(){
+        public Vehicles getCar(){
             return vehicle;
         }
         
