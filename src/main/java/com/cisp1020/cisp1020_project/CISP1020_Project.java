@@ -1,4 +1,5 @@
 package com.cisp1020.cisp1020_project;
+import com.cisp1020.cisp1020_project.VehicleSubclasses.*;
 
 /**
  *
@@ -7,6 +8,13 @@ package com.cisp1020.cisp1020_project;
  */
 public class CISP1020_Project {
     public static void main(String[] args) {
+        Vehicle v1 = new Vehicle();
+        Vehicle v2 = new EconomyCar();
+        Vehicle v3 = new SUV();
+        Vehicle v4 = new Motorcycle();
+               
+        System.out.println(Vehicle.vehicles);
+        
         
     }
 }
