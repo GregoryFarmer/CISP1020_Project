@@ -12,8 +12,8 @@ public class CISP1020_Project {
         Vehicles v3 = new SUV();
         Vehicles v4 = new Motorcycle();
                
-        System.out.println(Vehicles.search(v -> v.price < 30000 && v.isAvailable));
-        
-        
+        Vehicles.search(v -> v.price < 30000 && v.isAvailable).forEach(veh -> {
+            System.out.println(veh);
+        });
     }
 }

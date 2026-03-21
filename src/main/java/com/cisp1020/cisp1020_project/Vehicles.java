@@ -160,6 +160,6 @@ public class Vehicles {
      * @return A String representation of the vehicle
      */
     @Override public String toString() {
-        return String.format("Model: %s\nLicense Plate:%s\nId: %s\nCategory:%s\nPrice:%s", this.model, this.licensePlate, this.id, this.category, this.price);
+        return String.format("%s, %s, %s, %s, %s", this.model, this.licensePlate, this.id, this.category, this.price);
     }
 }
