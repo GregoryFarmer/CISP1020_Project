@@ -53,8 +53,8 @@ public class Vehicle {
      * @param Predicate filter 
      * {@snippet
      *  Vehicle v1 = new Vehicle()
-  Vehicle.search(v -> v.getID() == 0);
- }
+            Vehicle.search(v -> v.getID() == 0);
+        }
      * @return ArrayList<Vehicle> An ArrayList containing *only* the vehicles with the parameters.
      */
     public static ArrayList<Vehicle> search(Predicate<Vehicle> filter) {
