@@ -4,17 +4,19 @@ import java.util.*; import java.io.*; import java.lang.*;
 import java.util.function.Predicate;
 
 /**
- * The Vehicles superclass responsible for creating new vehicles.
+ * The Vehicle superclass responsible for creating new vehicles.
  * @author Gregory Farmer <gregory.farmer>
  */
-public class Vehicles {
-    public static ArrayList<Vehicles> vehicles = new ArrayList();
+public class Vehicle {
+    public static ArrayList<Vehicle> vehicles = new ArrayList();
     
-    // These variables must be passed as arguments when calling new Vehicles() (unless if you're testing).
+    // These variables must be passed as arguments when calling new Vehicle() (unless if you're testing).
     public String model = "Undefined"; 
-    public String category = "Undefined";
     public double price; 
-
+ 
+    public String category = "Unknown";
+    public static final double rentalRate = 1.5;
+    
     // These variables will be automatically set when constructing vehicles!
     public int id; // The order in which the vehicle was created
     public String licensePlate;
@@ -51,13 +53,13 @@ public class Vehicles {
      * @param Predicate filter 
      * {@snippet
      *  Vehicle v1 = new Vehicle()
-  Vehicles.search(v -> v.getID() == 0);
+  Vehicle.search(v -> v.getID() == 0);
  }
      * @return ArrayList<Vehicle> An ArrayList containing *only* the vehicles with the parameters.
      */
-    public static ArrayList<Vehicles> search(Predicate<Vehicles> filter) {
-        ArrayList<Vehicles> result = new ArrayList<>();
-        for (Vehicles v : vehicles) {
+    public static ArrayList<Vehicle> search(Predicate<Vehicle> filter) {
+        ArrayList<Vehicle> result = new ArrayList<>();
+        for (Vehicle v : vehicles) {
             if(filter.test(v)) {
                 result.add(v);
             }
@@ -66,15 +68,23 @@ public class Vehicles {
     }
     
     /**
+     * Sorts the constructed vehicles by price.
+     * @return ArrayList<Vehicle> An ArrayList containing vehicles sorted by price.
+     */
+    public static ArrayList<Vehicle> sortByPrice() {
+        vehicles.sort(Comparator.comparingDouble(Vehicle::getPrice));
+        return vehicles;
+    }
+    
+    /**
      * Constructs a new vehicle with given model, category, and price and adds it to the vehicle ArrayList.
      * @param String model The model of the vehicle. (e.g. Honda Civic)
-     * @param String category The category the vehicle is in (i.e. Car vs Bike)
      * @param double price The price of the vehicle.
      */
-    public Vehicles(String model, String category, double price) {
+    public Vehicle(String model, double price) {
         this.id = vehicles.size();
         this.licensePlate = generateLicense();
-        this.model = model; this.category = category; this.price = price;
+        this.model = model; this.price = price;
         this.isAvailable = true;
         vehicles.add(this);
     }
@@ -82,7 +92,7 @@ public class Vehicles {
     /**
      * For testing purposes - so you don't have to pass parameters every time!
      */
-    public Vehicles() {
+    public Vehicle() {
         this.id = vehicles.size();
         this.licensePlate = generateLicense();
         this.isAvailable = true;
@@ -109,6 +119,13 @@ public class Vehicles {
     public String getModel() {
         return this.model;
     }
+
+    /**
+     * @return The vehicle's price.
+     */
+    public double getPrice() {
+        return this.price;
+    }
     
     /**
      * @return The vehicle's category.
@@ -118,26 +135,11 @@ public class Vehicles {
     }
     
     /**
-     * @return The vehicle's price.
-     */
-    public double getPrice() {
-        return this.price;
-    }
-    
-    /**
      * Sets the vehicle's price.
      * @param price The new price of the vehicle.
      */
     public void setPrice(double price) {
         this.price = price;
-    }
-    
-    /**
-     * Sets the category of the vehicle.
-     * @param category The new category of the vehicle.
-     */
-    public void setCategory(String category) {
-        this.category = category;
     }
     
     /**
@@ -156,10 +158,20 @@ public class Vehicles {
         this.isAvailable = isAvailable;
     }
     
+    
+    /**
+     * Calculates 
+     * @param days The number of days the vehicle is being rented.
+     * @return The price of renting the car for x days.
+     */
+    public double getRentalRate(int days) {
+        return ((this.price * (Vehicle.rentalRate / 100)) * days);
+    }
+    
     /**
      * @return A String representation of the vehicle
      */
     @Override public String toString() {
-        return String.format("%s, %s, %s, %s, %s", this.model, this.licensePlate, this.id, this.category, this.price);
+        return String.format("%s, %s, %s, %s", this.model, this.licensePlate, this.id, this.price);
     }
 }

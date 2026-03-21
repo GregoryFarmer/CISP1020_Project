@@ -8,12 +8,13 @@ import com.cisp1020.cisp1020_project.VehicleSubclasses.*;
  */
 public class CISP1020_Project {
     public static void main(String[] args) {
-        Vehicles v2 = new EconomyCar();
-        Vehicles v3 = new SUV();
-        Vehicles v4 = new Motorcycle();
-               
-        Vehicles.search(v -> v.price < 30000 && v.isAvailable).forEach(veh -> {
-            System.out.println(veh);
+        EconomyCar v2 = new EconomyCar();
+        Vehicle v3 = new SUV();
+        Vehicle v4 = new Motorcycle();
+                       
+        Vehicle.search(v -> v.price < 30000 && v.isAvailable).forEach(veh -> {
+            System.out.println(veh.getRentalRate(100));
+            System.out.println(veh.getCategory());
         });
     }
 }
