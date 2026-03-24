@@ -49,6 +49,30 @@ public class Customer {
         return paymentType;
     }
 
+   /**
+ * Sets the customer's name.
+ * @param name the new name
+ */
+public void setName(String name) {
+    this.name = name;
+    }
+
+/**
+ * Sets the customer's ID.
+ * @param id the new ID
+ */
+public void setId(String id) {
+    this.id = id;
+    }
+
+/**
+ * Sets the customer's payment type.
+ * @param paymentType the new payment method
+ */
+public void setPaymentType(String paymentType) {
+    this.paymentType = paymentType;
+    }
+
     /**
      * Returns a formatted string of the customer data.
      * 
