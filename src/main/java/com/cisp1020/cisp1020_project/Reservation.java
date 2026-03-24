@@ -38,6 +38,21 @@ public class Reservation{
         public String getEndDate(){
             return endDate;
         }
+        public void setCustomer(Customer customer) {
+        this.customer = customer;
+        }
+    
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+        }
+    
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+        }
+    
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+        }
         
         @Override
         public String toString(){
