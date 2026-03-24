@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.cisp1020.cisp1020_project;
 
-/**
- *
- * @author jacob
- */
 
 /**
  * The Customer class stores information for a car rental client.
