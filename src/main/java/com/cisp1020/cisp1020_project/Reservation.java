@@ -13,22 +13,22 @@ import java.util.UUID;
  * @author jacob
  */
 public class Reservation{
-    private String reservationID;
+    private String reservationId;
     private Customer customer;  
     private Vehicle vehicle;
     private String startDate;
     private String endDate;
     
     public Reservation(Customer customer, Vehicle vehicle, String startDate, String endDate){
-        this.reservationID = UUID.randomUUID().toString();
+        this.reservationId = UUID.randomUUID().toString();
         this.customer = customer;
         this.vehicle = vehicle;
         this.startDate = startDate;
         this.endDate = endDate;
     }
         
-    public String getReservationID(){
-        return reservationID;
+    public String getReservationId(){
+        return reservationId;
     }
     
         public Customer getCustomer(){//shouldnt this call get name from customer?
@@ -63,7 +63,7 @@ public class Reservation{
         }
         
     
-    public long calculateDAys(){
+    public long calculateDays(){
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
         return ChronoUnit.DAYS.between(start, end);

@@ -34,7 +34,7 @@ public class Invoice implements Serializable {
         this.invoiceId = invoiceId;
         this.reservation = reservation;
         this.issueDate = LocalDateTime.now();
-        this.totalAmount = reservation.getTotalPrice();
+        this.totalAmount = calculateTotal();
         this.paid = false;
         this.extras = new HashMap<>(); 
     }
@@ -83,7 +83,7 @@ public class Invoice implements Serializable {
     }
     
     public double calculateTotal(){
-        return reservation.getCar().getRentalRate((int) reservation.calculateDAys());
+        return reservation.getCar().getRentalRate((int) reservation.calculateDays());
     }
     
   
