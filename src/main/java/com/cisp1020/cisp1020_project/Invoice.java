@@ -82,6 +82,10 @@ public class Invoice implements Serializable {
         setExtra("discount", amount);
     }
     
+    public double calculateTotal(){
+        return reservation.getCar().getRentalRate((int) reservation.calculateDAys());
+    }
+    
   
     
     @Override
@@ -94,7 +98,7 @@ public class Invoice implements Serializable {
         sb.append("========================================\n");
         sb.append("Invoice #: ").append(invoiceId).append("\n");
         sb.append("Customer:  ").append(reservation.getCustomer().getName()).append("\n");
-        sb.append("Car:       ").append(reservation.getCar().getBrand()).append(" ")
+        sb.append("Car:       ").append(reservation.getCar()).append(" ")
           .append(reservation.getCar().getModel()).append("\n");
         sb.append("Rental:    ").append(reservation.getStartDate()).append(" to ")
           .append(reservation.getEndDate()).append("\n");

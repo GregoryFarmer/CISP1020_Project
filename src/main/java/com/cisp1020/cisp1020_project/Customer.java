@@ -51,7 +51,7 @@ public class Customer {
     public String getPaymentType() {
         return paymentType;
     }
-
+/*
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -67,7 +67,7 @@ public class Customer {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-
+/*
    /**
  * Sets the customer's name.
  * @param name the new name
