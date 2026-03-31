@@ -6,6 +6,7 @@ package com.cisp1020.cisp1020_project;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -63,11 +64,12 @@ public class Reservation{
         }
         
     
-    public long calculateDays(){
-        LocalDate start = LocalDate.parse(startDate);
-        LocalDate end = LocalDate.parse(endDate);
-        return ChronoUnit.DAYS.between(start, end);
-    }
+    public long calculateDays() {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+    LocalDate start = LocalDate.parse(startDate, formatter);
+    LocalDate end = LocalDate.parse(endDate, formatter);
+    return ChronoUnit.DAYS.between(start, end);
+}
         @Override
         public String toString(){
             return customer.getID() + ", " + vehicle.getID() + ", " 
