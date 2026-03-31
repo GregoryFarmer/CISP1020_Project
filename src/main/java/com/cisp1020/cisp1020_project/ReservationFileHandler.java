@@ -3,14 +3,16 @@ package com.cisp1020.cisp1020_project;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
 
 /**
  *
- * @author jacob ADD A WAY TO RESERVE CARS FOR A PERIOD OF TIME!!!!
- * RIGHT  NOW YOU DONT HAVE AN END DATE SO A CAR WILL BE RESERVED FOREVER!!!
+ * @author 
  */
 public class ReservationFileHandler{
+    
     private static final String RESERVATION_FOLDER = "reservations/"; 
     /**
      * creates a folder to hold the reservations if one does not exist
@@ -73,10 +75,11 @@ public class ReservationFileHandler{
     private void validateDate(String startDate, String endDate) throws IllegalArgumentException{
         if(!startDate.matches("\\d{2}-\\d{2}-\\d{4}") ||
                 !endDate.matches("\\d{2}-\\d{2}-\\d{4}")){
-            throw new IllegalArgumentException("Invalid date format. Use MM-DD-YYYY");
+            throw new IllegalArgumentException("Invalid date format. Use MM-dd-yyyy");
         }
-        LocalDate reservationStartDate = LocalDate.parse(startDate);
-        LocalDate reservationEndDate = LocalDate.parse(endDate);
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        LocalDate reservationStartDate = LocalDate.parse(startDate, formattedDate);
+        LocalDate reservationEndDate = LocalDate.parse(endDate, formattedDate);
         if(reservationStartDate.isBefore(LocalDate.now())){
             throw new IllegalArgumentException("Reservation date canno be in the past."
                    + " They are not Marty McFly");

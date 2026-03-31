@@ -1,6 +1,8 @@
 package com.cisp1020.cisp1020_project;
 
-import java.util.*; import java.io.*; import java.lang.*;
+import java.util.*; 
+import java.io.*; 
+import java.lang.*;
 import java.util.function.Predicate;
 
 /**
@@ -63,7 +65,7 @@ public class Vehicle {
             if(filter.test(v)) {
                 result.add(v);
             }
-        };
+        }
         return result;
     }
     

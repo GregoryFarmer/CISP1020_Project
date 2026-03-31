@@ -8,7 +8,7 @@ import com.cisp1020.cisp1020_project.Vehicle;
 public class LuxuryCar extends Vehicle {    
     public LuxuryCar() {
         super("Luxury Car", 50000);
-        this.category = "Car";
+        this.category = "Car"; 
     }
     
     @Override public double getRentalRate(int days) {

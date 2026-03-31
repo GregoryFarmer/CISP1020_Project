@@ -7,7 +7,7 @@ import com.cisp1020.cisp1020_project.Vehicle;
  */
 public class EconomyCar extends Vehicle {    
     public EconomyCar() {
-        super("Economy", 25000);
+        super("Economy", 25000); //cut
         this.category = "Car";
     }
     

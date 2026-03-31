@@ -5,13 +5,13 @@ import com.cisp1020.cisp1020_project.Vehicle;
  *
  * @author Gregory Farmer <gregory.farmer>
  */
-public class HondaCivic extends Vehicle {    
-    public HondaCivic() {
-        super("Honda Civic", 30000);
-        this.category = "Car";
+public class SpecialtyCar extends Vehicle {    
+    public SpecialtyCar() {
+        super("Luxury Car", 50000);
+        this.category = "Car"; 
     }
     
     @Override public double getRentalRate(int days) {
-        return super.getRentalRate(days) + 100;
+        return super.getRentalRate(days) + 150;
     }
 }

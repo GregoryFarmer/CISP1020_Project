@@ -9,8 +9,8 @@ import com.cisp1020.cisp1020_project.VehicleSubclasses.*;
 public class CISP1020_Project {
     public static void main(String[] args) {
         EconomyCar v2 = new EconomyCar();
-        Vehicle v3 = new SUV();
-        Vehicle v4 = new Motorcycle();
+        Vehicle v3 = new LuxuryCar();
+        Vehicle v4 = new SpecialtyCar();
                        
         System.out.println(Vehicle.sortByPrice());
     }
