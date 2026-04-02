@@ -83,7 +83,7 @@ public class ReservationFileHandler{
         LocalDate reservationStartDate = LocalDate.parse(startDate, formattedDate);
         LocalDate reservationEndDate = LocalDate.parse(endDate, formattedDate);
         if(reservationStartDate.isBefore(LocalDate.now())){
-            throw new IllegalArgumentException("Reservation date canno be in the past."
+            throw new IllegalArgumentException("Reservation date cannot be in the past."
                    + " They are not Marty McFly");
         }
         if(!reservationEndDate.isAfter(reservationStartDate)){
