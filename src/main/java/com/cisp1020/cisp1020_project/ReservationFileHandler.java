@@ -28,7 +28,9 @@ public class ReservationFileHandler{
                 folder.mkdir();
         }
         
-    
+    /**
+     * allows user to write to a file and create the reservation.
+     */
     File reservationFile = new File(RESERVATION_FOLDER + 
                                     r.getCustomer().getID() + ".txt"); 
             try (PrintWriter writer = new PrintWriter(reservationFile)) {
@@ -88,7 +90,11 @@ public class ReservationFileHandler{
             throw new IllegalArgumentException("End date must be after the start date");
         }
     }
-    
+    /**
+     * checks the availability of a car 
+     * @param carID the unique id of the car
+     * @throws IllegalStateException if car is already reserved
+     */
     private void checkCarAvailablity(String carID) throws IllegalStateException{
         File folder = new File(RESERVATION_FOLDER);
         File[] reservations = folder.listFiles();

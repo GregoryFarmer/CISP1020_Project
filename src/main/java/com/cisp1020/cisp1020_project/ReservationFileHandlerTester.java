@@ -18,7 +18,9 @@ public class ReservationFileHandlerTester {
         testPastDate();
         testCarUnavailable();
     }
-        
+        /**
+         * this test is to see if a reservation can be created in the system.
+         */
         private static void testCreateReservation(){
             System.out.println("--- test reservation ---");
             Customer customer = new Customer("Tom Clancy", "C001", "MasterCard");
@@ -30,7 +32,9 @@ public class ReservationFileHandlerTester {
             
             System.out.println();
         }
-        
+        /**
+         * this test is to see if the system can retrieve a valid reservation.
+         */
         private static void testGetValidReservation(){
             System.out.println("--- test for valid reservation ---");
             ReservationFileHandler validR = new ReservationFileHandler();
@@ -38,7 +42,10 @@ public class ReservationFileHandlerTester {
             
             System.out.println();
         }
-        
+        /**
+         * this test is to see if the system will recognize an invalid reservation 
+         * and whether or not the system will grab it
+         */
         private static void testGetInvalidReservation(){
             System.out.println("--- test invalid reservation ---");
             ReservationFileHandler invalidR = new ReservationFileHandler();
@@ -47,7 +54,10 @@ public class ReservationFileHandlerTester {
             
             System.out.println();
         }
-        
+        /**
+         * this test is to try to push the limits and see if we can make an invalid date 
+         * format. SPOILER: we cannot, it throws an error
+         */
         private static void testInvalidDateFormat(){
             System.out.println("--- invalid date test ---");
             Customer customer = new Customer("Willoiam DaFoe", " C002", " Money");
@@ -59,7 +69,9 @@ public class ReservationFileHandlerTester {
             
             System.out.println();
         }
-        
+        /**
+         * this test is to try and rent a car with a date in the past.
+         */
         private static void testPastDate(){
             System.out.println("--- past date test ---");
             Customer customer = new Customer("Bob Belcher", " C003", " Gold");
@@ -72,7 +84,10 @@ public class ReservationFileHandlerTester {
             
             System.out.println();
         }
-        
+        /**
+         * this test checks to see if our system will rent out a car that is already rented
+         * out, spoiler: it will not.
+         */
         private static void testCarUnavailable(){
             System.out.println("--- car unavailable test ---");
             Vehicle sameCar = new EconomyCar();
