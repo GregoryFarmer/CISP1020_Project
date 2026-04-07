@@ -11,6 +11,7 @@ import java.util.Scanner;
  *
  * @author 
  */
+//ADD UPDATE METHOD
 public class ReservationFileHandler{
     
     private static final String RESERVATION_FOLDER = "reservations/"; 
@@ -69,6 +70,29 @@ public class ReservationFileHandler{
                 System.out.println("Reservation not found for: " + customerID);
                 }
     }
+    /**
+     * this allows us to update the reservation
+     * @param customerID the ID of the customer
+     * @param r the reservation
+     */
+    public void updateReservation(String customerID, Reservation r) {
+    File reservationFile = new File(RESERVATION_FOLDER + customerID + ".txt");
+    if (!reservationFile.exists()) {
+        System.out.println("Reservation not found for: " + customerID);
+        return;
+    }
+    try {
+        validateDate(r.getStartDate(), r.getEndDate());
+        try (PrintWriter writer = new PrintWriter(reservationFile)) {
+            writer.println(r.toString());
+            System.out.println("Reservation updated for: " + customerID);
+        }
+    } catch (IllegalArgumentException e) {
+        System.out.println("Invalid date: " + e.getMessage());
+    } catch (FileNotFoundException e) {
+        System.out.println("Error updating reservation for: " + customerID);
+    }
+}
     /**
      * 
      * @param date the date to validate
