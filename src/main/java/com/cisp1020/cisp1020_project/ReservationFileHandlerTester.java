@@ -57,6 +57,7 @@ public class ReservationFileHandlerTester {
         /**
          * this test is to try to push the limits and see if we can make an invalid date 
          * format. SPOILER: we cannot, it throws an error
+         * i tested with invalid date format, it crashed
          */
         private static void testInvalidDateFormat(){
             System.out.println("--- invalid date test ---");
