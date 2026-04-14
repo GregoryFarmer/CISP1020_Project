@@ -52,7 +52,8 @@ public class CISP1020_Project {
                 System.out.println("Invalid choice, defaulting to Economy Car.");
                 car = new EconomyCar();
         }
-
+        System.out.println(car.getID());
+        
         System.out.println("Enter start date (MM-dd-yyyy): ");
         String startDate = scanner.nextLine();
 

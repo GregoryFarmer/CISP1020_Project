@@ -20,7 +20,7 @@ public class Vehicle {
     private double rentalRate = 1.5;
     
     // These variables will be automatically set when constructing vehicles!
-    private int id; // The order in which the vehicle was created
+    private String id; // The order in which the vehicle was created
     private String licensePlate;
     public boolean isAvailable; // Whether or not the vehicle is available (use setAvailable() in handling reservations)
     
@@ -84,7 +84,7 @@ public class Vehicle {
      * @param double price The price of the vehicle.
      */
     public Vehicle(String model, double price) {
-        this.id = vehicles.size();
+        this.id = UUID.randomUUID().toString();
         this.licensePlate = generateLicense();
         this.model = model; this.price = price;
         this.isAvailable = true;
@@ -95,7 +95,7 @@ public class Vehicle {
      * For testing purposes - so you don't have to pass parameters every time!
      */
     public Vehicle() {
-        this.id = vehicles.size();
+        this.id = UUID.randomUUID().toString();
         this.licensePlate = generateLicense();
         this.isAvailable = true;
         vehicles.add(this);
@@ -104,7 +104,7 @@ public class Vehicle {
     /** 
      * @return The order in which the vehicle was constructed.
      */
-    public int getID() {
+    public String getID() {
         return this.id;
     }
     
