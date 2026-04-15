@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author
  */
-//ADD UPDATE METHOD
+
 public class ReservationFileHandler {
 
     private static final String RESERVATION_FOLDER = "reservations/";

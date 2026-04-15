@@ -15,7 +15,7 @@ public class CISP1020_Project {
 
         Scanner scanner = new Scanner(System.in);
 
-        // Get customer info from user
+        
         System.out.println("Enter customer name: ");
         String name = scanner.nextLine();
 
@@ -71,10 +71,10 @@ public class CISP1020_Project {
         invoice.addCharge("GPS Rental", 15.00);
         invoice.applyDiscount(10.00);
 
-// Show the invoice before payment
+
         System.out.println(invoice);
 
-// Ask for payment confirmation
+
         System.out.println("Would you like to proceed with payment? (yes/no)");
         String payResponse = scanner.nextLine();
 
@@ -90,8 +90,7 @@ public class CISP1020_Project {
         fileHandler.createReservation(reservation);
         fileHandler.getReservation(customer.getID());
 
-        // Extension loop
-        // Extension loop
+        
         String response = "yes";
         while (response.equalsIgnoreCase("yes")) {
             System.out.println("\nWould you like to extend your reservation? (yes/no)");
