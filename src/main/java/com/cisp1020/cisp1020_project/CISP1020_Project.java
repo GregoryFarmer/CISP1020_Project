@@ -19,8 +19,7 @@ public class CISP1020_Project {
         System.out.println("Enter customer name: ");
         String name = scanner.nextLine();
 
-        String id = name.substring(0, 3).toUpperCase() + (int) (Math.random() * 1000);
-
+        String id = String.format("%s%s", name.substring(0, (int) Math.floor(name.length() / 2)), String.valueOf((int) Math.floor((Math.random() * 1000))));
         System.out.println("Enter payment type (Credit Card/Debit Card/Cash): ");
         String paymentType = scanner.nextLine();
 
@@ -53,7 +52,8 @@ public class CISP1020_Project {
                 System.out.println("Invalid choice, defaulting to Economy Car.");
                 car = new EconomyCar();
         }
-
+        System.out.println(car.getID());
+        
         System.out.println("Enter start date (MM-dd-yyyy): ");
         String startDate = scanner.nextLine();
 
