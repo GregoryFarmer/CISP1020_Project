@@ -4,7 +4,7 @@ package com.cisp1020.cisp1020_project;
  * The Customer class stores information for a car rental client. Designed to
  * integrate with the Reservation class.
  *
- * @author Ryan
+ * @author Ryan McClure
  */
 public class Customer {
 

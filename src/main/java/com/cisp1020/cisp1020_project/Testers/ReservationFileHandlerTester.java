@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.cisp1020.cisp1020_project;
+package com.cisp1020.cisp1020_project.Testers;
+import com.cisp1020.cisp1020_project.*;
 import com.cisp1020.cisp1020_project.VehicleSubclasses.*;
 
 /**
- *
- * @author jacob
+ * A test unit for creating reservations.
+ * @author Jacob Hidinger
  */
 public class ReservationFileHandlerTester {
     public static void main(String[] args) {

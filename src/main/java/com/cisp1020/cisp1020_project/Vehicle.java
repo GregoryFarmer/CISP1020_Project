@@ -7,10 +7,28 @@ import java.util.function.Predicate;
 
 /**
  * The Vehicle superclass responsible for creating new vehicles.
- * @author Gregory Farmer <gregory.farmer>
+ * @author Gregory Farmer
  */
 public class Vehicle {
-    private static ArrayList<Vehicle> vehicles = new ArrayList();
+    private static Map<String, ArrayList<Vehicle>> vehicles = new TreeMap<>();
+
+    /**
+     * Adds a vehicle to the necessary ArrayList in the vehicles TreeMap.
+     * @param vehicle The vehicle to add to the ArrayList.
+     */
+    public static void addVehicle(Vehicle vehicle) {
+        vehicles.putIfAbsent(vehicle.getModel(), new ArrayList<>());
+        vehicles.get(vehicle.getModel()).add(vehicle);
+    }
+
+    /**
+     * Retrieves the respective ArrayList from the TreeMap.
+     * @param model The model to retrieve.
+     * @return The ArrayList of vehicles for the model.
+     */
+    public static ArrayList<Vehicle> getVehiclesByModel(String model) {
+        return vehicles.getOrDefault(model, new ArrayList<>());
+    }
     
     // These variables must be passed as arguments when calling new Vehicle() (unless if you're testing).
     private String model = "Undefined"; 
@@ -52,43 +70,47 @@ public class Vehicle {
     
     /**
      * Searches all constructed vehicles for a specific predicate.
-     * @param Predicate filter 
-     * {@snippet
-     *  Vehicle v1 = new Vehicle()
-            Vehicle.search(v -> v.getID() == 0);
-        }
-     * @return ArrayList<Vehicle> An ArrayList containing *only* the vehicles with the parameters.
+     * @param filter 
+     * @return An ArrayList containing *only* the vehicles with the parameters.
      */
     public static ArrayList<Vehicle> search(Predicate<Vehicle> filter) {
         ArrayList<Vehicle> result = new ArrayList<>();
-        for (Vehicle v : vehicles) {
-            if(filter.test(v)) {
-                result.add(v);
+        for (ArrayList<Vehicle> list : vehicles.values()) {
+            for (Vehicle v : list) {
+                if (filter.test(v)) {
+                    result.add(v);
+                }
             }
         }
+
         return result;
     }
-    
+
     /**
      * Sorts the constructed vehicles by price.
-     * @return ArrayList<Vehicle> An ArrayList containing vehicles sorted by price.
+     * @return An ArrayList containing vehicles sorted by price.
      */
     public static ArrayList<Vehicle> sortByPrice() {
-        vehicles.sort(Comparator.comparingDouble(Vehicle::getPrice));
-        return vehicles;
+        ArrayList<Vehicle> sortedVehicles = new ArrayList<>();
+        for (ArrayList<Vehicle> list : vehicles.values()) {
+            sortedVehicles.addAll(list);
+        }
+
+        sortedVehicles.sort(Comparator.comparingDouble(Vehicle::getPrice));
+        return sortedVehicles;
     }
     
     /**
      * Constructs a new vehicle with given model, category, and price and adds it to the vehicle ArrayList.
-     * @param String model The model of the vehicle. (e.g. Honda Civic)
-     * @param double price The price of the vehicle.
+     * @param model The model of the vehicle. (e.g. Honda Civic)
+     * @param price The price of the vehicle.
      */
     public Vehicle(String model, double price) {
-        this.id = UUID.randomUUID().toString();
+        this.id = String.format("%s%s", model, getVehiclesByModel(model).size());
         this.licensePlate = generateLicense();
         this.model = model; this.price = price;
         this.isAvailable = true;
-        vehicles.add(this);
+        addVehicle(this);
     }
     
     /**
@@ -98,7 +120,7 @@ public class Vehicle {
         this.id = UUID.randomUUID().toString();
         this.licensePlate = generateLicense();
         this.isAvailable = true;
-        vehicles.add(this);
+        addVehicle(this);
     }
     
     /** 

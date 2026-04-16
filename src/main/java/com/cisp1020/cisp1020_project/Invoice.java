@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- * @author zemet
+ * Customer-Invoice handling.
+ * @author Zemetrik Ellison
  */
 public class Invoice implements Serializable {
     
@@ -29,7 +29,12 @@ public class Invoice implements Serializable {
     private Map<String, Object> extras;
     
  
-    // constuctor
+    /**
+     * An overloaded constructor that creates an invoice based on 
+     * invoidId and reservation parameters.
+     * @param invoiceId The id of the invoice.
+     * @param reservation The reservation of the invoice.
+     */
     public Invoice(String invoiceId, Reservation reservation) {
         this.invoiceId = invoiceId;
         this.reservation = reservation;
@@ -40,54 +45,98 @@ public class Invoice implements Serializable {
     }
     
    
-    // getters
+    /**
+     * @return The invoice's id.
+     */
     public String getInvoiceId() { return invoiceId; }
+    
+    /**
+     * @return The Reservation.
+     */
     public Reservation getReservation() { return reservation; }
+    
+    /**
+     * @return The LocalDateTime in which the invoice was issued.
+     */
     public LocalDateTime getIssueDate() { return issueDate; }
+    
+    /**
+     * @return The amount to be paid.
+     */
     public double getTotalAmount() { return totalAmount; }
+    
+    /**
+     * @return Whether the invoice has been paid.
+     */
     public boolean isPaid() { return paid; }
     
   
-    // setters
+    /**
+     * Sets whether the invoice has been paid or not.
+     * @param paid Whether the invoice has been paid.
+     */
     public void setPaid(boolean paid) { this.paid = paid; }
     
    
+    /**
+     * Add (key, value) to the extras map.
+     * @param key 
+     * @param value 
+     */
     public void setExtra(String key, Object value) {
         extras.put(key, value);
     }
-    
-  // any extra stored info
+
+    /**
+     * @param key The key to retrieve
+     * @return The value of (key) in the extras map.
+     */
     public Object getExtra(String key) {
         return extras.get(key);
     }
     
   
-    
-  // to mark if it was paid and how
+    /**
+     * Marks whether it was paid any how.
+     * @param paymentMethod The method in which the invoice was paid.
+     */
     public void markAsPaid(String paymentMethod) {
         this.paid = true;
         setExtra("paymentMethod", paymentMethod);
         setExtra("paymentDate", LocalDateTime.now());
     }
     
-  // the option to add extra charges as an extra
+    /**
+     * The option to add other charges as an extra.
+     * @param description The description of the invoice.
+     * @param amount The amount of the invoice.
+     */
     public void addCharge(String description, double amount) {
         totalAmount += amount;
         setExtra(description, amount);
     }
     
- //to apply a discount
+    /**
+     * Applies a discount.
+     * @param amount The amount to be discounted.
+     */
     public void applyDiscount(double amount) {
         totalAmount -= amount;
         setExtra("discount", amount);
     }
     
+    /**
+     * Calculates the total.
+     * @return The total of the invoice.
+     */
     public double calculateTotal(){
         return reservation.getCar().getRentalRate((int) reservation.calculateDays());
     }
     
   
-    
+    /**
+     * @return A String representation of the invoice.
+     */
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -129,7 +178,9 @@ public class Invoice implements Serializable {
         return sb.toString();
     }
     
-    // saving to a file
+    /**
+     * @return A String representation for filesaving.
+     */
     public String toFileString() {
         return invoiceId + "," + 
                reservation.getReservationId() + "," +

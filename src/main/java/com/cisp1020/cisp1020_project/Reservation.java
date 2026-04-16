@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cisp1020.cisp1020_project;
 
 import java.time.LocalDate;
@@ -10,20 +6,16 @@ import java.util.UUID;
 import java.time.format.DateTimeFormatter;
 
 /**
- *
- * @author jacob
+ * The file that creates Reservations based on Customer and Vehicle data.
+ * @author Jacob Hidinger
  */
 public class Reservation {
-
-    private String reservationId;
     private Customer customer;
     private Vehicle vehicle;
-    private String startDate;
-    private String endDate;
+    private String reservationId, startDate, endDate;
 
     /**
-     * overloaded constructor
-     *
+     * An overloaded constructor that creates a new reservation with given parameters.
      * @param customer
      * @param vehicle
      * @param startDate
@@ -38,8 +30,7 @@ public class Reservation {
     }
 
     /**
-     * get reservation method
-     *
+     * Retrieves the reservation's ID.
      * @return reservationID
      */
     public String getReservationId() {
@@ -47,81 +38,72 @@ public class Reservation {
     }
 
     /**
-     * get customer method
-     *
-     * @return customer
+     * Retrieves the customer involved in the reservation.
+     * @return The Customer involved in the reservation.
      */
     public Customer getCustomer() {
         return customer;
     }
 
     /**
-     * get car method
-     *
-     * @return vehicle
+     * Retrieves the vehicle.
+     * @return vehicle The vehicle being reserved.
      */
     public Vehicle getCar() {
         return vehicle;
     }
 
     /**
-     * get start date method
-     *
-     * @return start date
+     * Retrieves the reservation's start date.
+     * @return The reservation's start date.
      */
     public String getStartDate() {
         return startDate;
     }
 
     /**
-     * get end date method
-     *
-     * @return end date
+     * Retrieves the reservation's end date.
+     * @return The reservation's end date.
      */
     public String getEndDate() {
         return endDate;
     }
 
     /**
-     * sets customer
-     *
-     * @param customer
+     * Sets the reservation's customer.
+     * @param customer The Customer involved in the reservation.
      */
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
     /**
-     * sets vehicle
-     *
-     * @param vehicle
+     * Sets the reservation's vehicle.
+     * @param vehicle The vehicle for the reservation.
      */
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 
     /**
-     * sets the start date
-     *
-     * @param startDate
+     * Sets the reservation's begin date.
+     * @param startDate The date the vehicle's reservation will begin.
      */
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
     /**
-     * sets the end date
-     *
-     * @param endDate
+     * Sets the reservation's end date.
+     * @param endDate The date the vehicle's reservation will expire.
      */
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
     /**
-     * calculates the number of days the car was rented for
-     *
-     * @return start and end days
+     * Calculates the number of days the car was rented for.
+     * @return The number of days between the start and end date.
      */
     public long calculateDays() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
@@ -130,10 +112,12 @@ public class Reservation {
         return ChronoUnit.DAYS.between(start, end);
     }
 
+    /**
+     * @return A string representation of the Reservation.
+     */
     @Override
     public String toString() {
-        return customer.getID() + ", " + vehicle.getID() + ", "
-                + startDate + ", " + endDate;
+        return String.format("%s, %s, %s, %s", customer.getID(), vehicle.getID(), startDate, endDate);
     }
 
 }

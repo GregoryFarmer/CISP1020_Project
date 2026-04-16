@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
- *
- * @author
+ * Converts Reservations from Objects -> readable / writable files. 
+ * @author Jacob Hidinger
  */
 
 public class ReservationFileHandler {
@@ -15,9 +15,8 @@ public class ReservationFileHandler {
     private static final String RESERVATION_FOLDER = "reservations/";
 
     /**
-     * creates a folder to hold the reservations if one does not exist
-     *
-     * @param r the reservation to create
+     * Creates a folder to hold the reservations if one does not exist.
+     * @param r The reservation to create.
      */
     public void createReservation(Reservation r) {
         try {
@@ -30,7 +29,7 @@ public class ReservationFileHandler {
             }
 
             /**
-             * allows user to write to a file and create the reservation.
+             * Allows user to write to a file and create the reservation.
              */
             File reservationFile = new File(RESERVATION_FOLDER
                     + r.getCustomer().getID() + ".txt");
@@ -50,9 +49,8 @@ public class ReservationFileHandler {
     }
 
     /**
-     * prints and retrieves a reservation by customerID number
-     *
-     * @param customerID the Id of the customer to return
+     * Prints and retrieves a reservation by customerID number.
+     * @param customerID The Id of the customer to return
      */
     public void getReservation(String customerID) {
         File reservationFile = new File(RESERVATION_FOLDER + customerID + ".txt");
@@ -70,10 +68,9 @@ public class ReservationFileHandler {
     }
 
     /**
-     * this allows us to update the reservation
-     *
-     * @param customerID the ID of the customer
-     * @param r the reservation
+     * This allows us to update the reservation.
+     * @param customerID The ID of the customer.
+     * @param r The reservation.
      */
     public void updateReservation(String customerID, Reservation r) {
         File reservationFile = new File(RESERVATION_FOLDER + customerID + ".txt");
@@ -95,9 +92,8 @@ public class ReservationFileHandler {
     }
 
     /**
-     *
-     * @param date the date to validate
-     * @throws IllegalArgumentException if the date is invalid or in the past
+     * @param date The date to validate
+     * @throws IllegalArgumentException If the date is invalid or in the past
      */
     private void validateDate(String startDate, String endDate) throws IllegalArgumentException {
         if (!startDate.matches("\\d{2}-\\d{2}-\\d{4}")
@@ -117,10 +113,9 @@ public class ReservationFileHandler {
     }
 
     /**
-     * checks the availability of a car
-     *
-     * @param carID the unique id of the car
-     * @throws IllegalStateException if car is already reserved
+     * Checks the availability of a car.
+     * @param carID The unique id of the car.
+     * @throws IllegalStateException If car is already reserved.
      */
     private void checkCarAvailablity(String carID, String CustomerID) throws IllegalStateException {
         File folder = new File(RESERVATION_FOLDER);
