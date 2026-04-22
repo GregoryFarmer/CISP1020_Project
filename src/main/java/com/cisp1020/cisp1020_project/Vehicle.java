@@ -12,7 +12,19 @@ import java.util.function.Predicate;
 public class Vehicle {
     private static Map<String, ArrayList<Vehicle>> vehicles = new TreeMap<>();
 
-    /**
+    // These variables must be passed as arguments when calling new Vehicle() (unless if you're testing).
+    private String model = "Undefined"; 
+    protected String category = "Unknown";
+
+    private double price; 
+    private double rentalRate = 1.5;
+    
+    // These variables will be automatically set when constructing vehicles!
+    private String id; // The order in which the vehicle was created
+    private String licensePlate;
+    public boolean isAvailable; // Whether or not the vehicle is available (use setAvailable() in handling reservations)
+    
+        /**
      * Adds a vehicle to the necessary ArrayList in the vehicles TreeMap.
      * @param vehicle The vehicle to add to the ArrayList.
      */
@@ -29,19 +41,7 @@ public class Vehicle {
     public static ArrayList<Vehicle> getVehiclesByModel(String model) {
         return vehicles.getOrDefault(model, new ArrayList<>());
     }
-    
-    // These variables must be passed as arguments when calling new Vehicle() (unless if you're testing).
-    private String model = "Undefined"; 
-    protected String category = "Unknown";
 
-    private double price; 
-    private double rentalRate = 1.5;
-    
-    // These variables will be automatically set when constructing vehicles!
-    private String id; // The order in which the vehicle was created
-    private String licensePlate;
-    public boolean isAvailable; // Whether or not the vehicle is available (use setAvailable() in handling reservations)
-    
     /**
      * Generates a String for license plates! 
      * @return A formatted string in the form of a license plate (XXX-XXXX).

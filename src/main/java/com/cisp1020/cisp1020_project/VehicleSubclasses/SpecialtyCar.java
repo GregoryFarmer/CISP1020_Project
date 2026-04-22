@@ -7,7 +7,7 @@ import com.cisp1020.cisp1020_project.Vehicle;
  */
 public class SpecialtyCar extends Vehicle { 
     public SpecialtyCar() {
-        super("Specialty", 20000);
+        super("Specialty", 40000);
         this.category = "Car"; 
     }
     

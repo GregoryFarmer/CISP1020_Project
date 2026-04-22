@@ -15,6 +15,8 @@ public class ReservationFileHandlerTester {
         testPastDate();
         testCarUnavailable();
     }
+        public static Vehicle availabilityTestCar; 
+    
         /**
          * this test is to see if a reservation can be created in the system.
          */
@@ -22,6 +24,7 @@ public class ReservationFileHandlerTester {
             System.out.println("--- test reservation ---");
             Customer customer = new Customer("Tom Clancy", "C001", "MasterCard");
             Vehicle car = new EconomyCar();
+            availabilityTestCar = car;
             
             Reservation r = new Reservation(customer, car, "11-25-2026", "11-30-2026");
             ReservationFileHandler handler = new ReservationFileHandler();
@@ -88,10 +91,9 @@ public class ReservationFileHandlerTester {
          */
         private static void testCarUnavailable(){
             System.out.println("--- car unavailable test ---");
-            Vehicle sameCar = new EconomyCar();
             Customer customer2 = new Customer("Jim Brownie", "C004", "Gambling");
             
-            Reservation r2 = new Reservation(customer2, sameCar, "06-30-2026", "07-03-2026");
+            Reservation r2 = new Reservation(customer2, availabilityTestCar, "06-30-2026", "07-03-2026");
             
             ReservationFileHandler handler = new ReservationFileHandler();
             handler.createReservation(r2);
